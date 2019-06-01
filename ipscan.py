@@ -1,3 +1,4 @@
+#Scans the IP address range sockets
 import socket
 import json
 from datetime import datetime

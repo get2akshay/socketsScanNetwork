@@ -1,3 +1,4 @@
+#Creats an SSH session to the router
 import base64
 import paramiko
 import json

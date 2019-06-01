@@ -1,4 +1,4 @@
-#Scan the IP Address range and collect alive IP
+#Scan the IP Addres range and collect alive IP list
 from ipscan import main
 
 main()

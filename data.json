@@ -2,8 +2,8 @@
 {
 "ipAddress":"127.0.0.1",
 "subnetmask": 8,
-"startAddress": 1,
-"endAddress": 15,
+"startAddress":1,
+"endAddress":2,
 "username":"akshay",
 "password":"akshay911",
 "version":"1.0"

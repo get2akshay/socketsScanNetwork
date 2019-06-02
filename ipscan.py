@@ -3,13 +3,17 @@ import socket
 import json
 from datetime import datetime
 
+
+def info(message):
+    print("\n" + message + "\n")
+
 def scan(ip):
-   s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-   socket.setdefaulttimeout(1)
-   result = s.connect_ex((ip,135))
-   if result == 0:
+    s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+    socket.setdefaulttimeout(1)
+    result = s.connect_ex((ip,135))
+    if result == 0:
       return 1
-   else :
+    else :
       return 0
 
 def readData ():
@@ -26,22 +30,21 @@ def readData ():
         #en1 = int(input("Enter the Last Number: "))
         return net2,net,st1,en1;
 
-def main():
+def scanStatus():
     ipAlive = []
     subnet,ip,startNum,endNum = readData()
-    addr = ip + str(startNum)
-    print ("Scanning address:" + ip)
-    for x in range (startNum,endNum):
-        ipa = subnet + str(startNum)
-        if (scan(ipa)):
-            print(ip, "is alive!")
-            ipAlive.append(ipa)
+    t1 = datetime.now()
+    while startNum <= endNum:
+        ip = subnet + str(startNum)
+        up = scan(ip)
+        if(up):
+            info("Node " + ip + " is up!")
+            ipAlive.append(ip)
         else:
-            print ("Node " + ipa + " is dead!")
-        startNum = startNum + 1
-    #t1 = datetime.now()
-    #t2 = datetime.now()
-    #total = t2 - t1
-    #print ("Scanning completed in: " , total)
-
-main()
+            info("Node " + ip + " is dead!")
+        startNum+=1
+    t2 = datetime.now()
+    total = t2 - t1
+    info("Scanning completed in: " + str(total))
+    return ipAlive
+scanStatus()
